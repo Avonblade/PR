@@ -1,0 +1,1 @@
+Server=.\SQLEXPRESS;Database=PR15_KitchenFurniture;Integrated Security=True;TrustServerCertificate=True;Connect Timeout=5;

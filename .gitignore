@@ -1,0 +1,16 @@
+# Generated .NET and Visual Studio files
+**/bin/
+**/obj/
+**/.vs/
+*.user
+*.suo
+# Published applications and archives
+**/App/
+**/publish/
+*.zip
+*.rar
+# Local data and logs
+*.mdf
+*.ldf
+*.bak
+*.log

@@ -1,0 +1,1 @@
+Server=.\SQLEXPRESS;Database=Task09School;Integrated Security=True;TrustServerCertificate=True;Connect Timeout=5;

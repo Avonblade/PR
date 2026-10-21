@@ -1,0 +1,1 @@
+Server=.\SQLEXPRESS;Database=PR16_AlisaClothes;Integrated Security=True;TrustServerCertificate=True;Connect Timeout=5;

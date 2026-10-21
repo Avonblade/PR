@@ -1,0 +1,92 @@
+<Window x:Class="WPF_PR16_clothes_ZaytsevVI.MainPage.CatalogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource {x:Type Window}}"
+        Title="Одежда Alisa — ZaytsevVI | ПР 16, вариант 4"
+        Width="1280" Height="850" MinWidth="1080" MinHeight="700"
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions><RowDefinition Height="105"/><RowDefinition Height="*"/><RowDefinition Height="40"/></Grid.RowDefinitions>
+        <Border Background="#445C93" Padding="28,18">
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Text="ПРАКТИЧЕСКАЯ РАБОТА 16   /   ВАРИАНТ 04" Foreground="#BAE3E8" FontSize="11" FontWeight="SemiBold" />
+                    <TextBlock Text="Куртки, джемперы, жакеты" Foreground="White" FontSize="28" FontWeight="SemiBold" Margin="0,5,0,0" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <Border Background="White" CornerRadius="5" Padding="7,3">
+                        <Image Source="pack://application:,,,/WPF_PR16_clothes_ZaytsevVI;component/Resorce/logo.jpg" Width="190" Height="52" Stretch="Uniform"/>
+                    </Border>
+                    <TextBlock Text="ZaytsevVI  ·  каталог одежды" Foreground="#BAE3E8" FontSize="10" HorizontalAlignment="Right" Margin="0,3,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" Margin="28,22,28,0" x:Name="Workspace">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/><RowDefinition Height="90"/><RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/><RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+                <Border Background="White" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="18,10" Margin="0,0,12,0">
+                    <StackPanel><TextBlock Text="Товаров Alisa" Foreground="{StaticResource Muted}" FontSize="12"/><TextBlock x:Name="TotalProductsText" Text="—" FontSize="27" FontWeight="SemiBold"/></StackPanel>
+                </Border>
+                <Border Grid.Column="1" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="18,10" Margin="0,0,12,0">
+                    <StackPanel><TextBlock Text="Категорий одежды" Foreground="{StaticResource Muted}" FontSize="12"/><TextBlock x:Name="TotalCategoriesText" Text="—" FontSize="27" FontWeight="SemiBold"/></StackPanel>
+                </Border>
+                <Border Grid.Column="2" Background="#FAC716" CornerRadius="9" Padding="18,10">
+                    <StackPanel><TextBlock Text="Единиц на складе" Foreground="{StaticResource Muted}" FontSize="12"/><TextBlock x:Name="TotalStockText" Text="—" FontSize="27" FontWeight="SemiBold"/></StackPanel>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="1" Margin="0,18,0,14">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="2*"/><ColumnDefinition Width="1.2*"/><ColumnDefinition Width="1.3*"/><ColumnDefinition Width="0.7*"/><ColumnDefinition Width="1*"/><ColumnDefinition Width="1.4*"/></Grid.ColumnDefinitions>
+                <StackPanel Margin="0,0,10,0"><TextBlock Text="ПОИСК ПО ТОВАРАМ" Style="{StaticResource FieldLabel}" FontSize="10"/><TextBox x:Name="SearchBox" TextChanged="Filter_Changed" ToolTip="Поиск по названию, артикулу и описанию"/></StackPanel>
+                <StackPanel Grid.Column="1" Margin="0,0,10,0"><TextBlock Text="КАТЕГОРИЯ" Style="{StaticResource FieldLabel}" FontSize="10"/><ComboBox x:Name="CategoryFilter" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="SelectionFilter_Changed"/></StackPanel>
+                <StackPanel Grid.Column="2" Margin="0,0,10,0"><TextBlock Text="МАТЕРИАЛ" Style="{StaticResource FieldLabel}" FontSize="10"/><ComboBox x:Name="MaterialFilter" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="SelectionFilter_Changed"/></StackPanel>
+                <StackPanel Grid.Column="3" Margin="0,0,10,0"><TextBlock Text="РАЗМЕР" Style="{StaticResource FieldLabel}" FontSize="10"/><ComboBox x:Name="SizeFilter" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="SelectionFilter_Changed"/></StackPanel>
+                <StackPanel Grid.Column="4" Margin="0,0,10,0"><TextBlock Text="ЦВЕТ" Style="{StaticResource FieldLabel}" FontSize="10"/><ComboBox x:Name="ColorFilter" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="SelectionFilter_Changed"/></StackPanel>
+                <StackPanel Grid.Column="5"><TextBlock Text="СОРТИРОВКА" Style="{StaticResource FieldLabel}" FontSize="10"/><ComboBox x:Name="SortBox" SelectedIndex="0" SelectionChanged="SelectionFilter_Changed"><ComboBoxItem Content="Сначала новые"/><ComboBoxItem Content="Цена: по возрастанию"/><ComboBoxItem Content="Цена: по убыванию"/><ComboBoxItem Content="По названию"/></ComboBox></StackPanel>
+            </Grid>
+            <Grid Grid.Row="2" Margin="0,0,0,12">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="＋  Добавить товар" Click="Add_Click" Margin="0,0,8,0"/>
+                    <Button x:Name="EditButton" Content="Изменить" Click="Edit_Click" Style="{StaticResource SecondaryButton}" IsEnabled="False" Margin="0,0,8,0"/>
+                    <Button x:Name="DeleteButton" Content="Удалить" Click="Delete_Click" Style="{StaticResource DangerButton}" IsEnabled="False"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="Сбросить фильтры" Click="Reset_Click" Style="{StaticResource SecondaryButton}" Margin="0,0,8,0"/>
+                    <Button Content="Обновить" Click="Refresh_Click" Style="{StaticResource SecondaryButton}"/>
+                </StackPanel>
+            </Grid>
+            <Border Grid.Row="3" Background="White" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" ClipToBounds="True">
+                <Grid>
+                    <DataGrid x:Name="ProductsGrid" SelectionChanged="ProductsGrid_SelectionChanged" MouseDoubleClick="ProductsGrid_MouseDoubleClick" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="АРТИКУЛ" Binding="{Binding Article}" Width="105"/>
+                            <DataGridTemplateColumn Header="ТОВАР / МАТЕРИАЛ" Width="*" MinWidth="190">
+                                <DataGridTemplateColumn.CellTemplate><DataTemplate><StackPanel><TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" ToolTip="{Binding Name}"/><TextBlock Text="{Binding MaterialName}" FontSize="12" Foreground="{StaticResource Muted}" Margin="0,5,0,0"/></StackPanel></DataTemplate></DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="КАТЕГОРИЯ" Binding="{Binding CategoryName}" Width="115"><DataGridTextColumn.ElementStyle><Style TargetType="TextBlock"><Setter Property="TextWrapping" Value="Wrap"/></Style></DataGridTextColumn.ElementStyle></DataGridTextColumn>
+                            <DataGridTextColumn Header="РАЗМЕР" Binding="{Binding SizeName}" Width="85"/>
+                            <DataGridTextColumn Header="ЦВЕТ" Binding="{Binding ColorName}" Width="115"/>
+                            <DataGridTextColumn Header="ЦЕНА" Binding="{Binding PriceText}" Width="136"><DataGridTextColumn.ElementStyle><Style TargetType="TextBlock"><Setter Property="FontWeight" Value="SemiBold"/></Style></DataGridTextColumn.ElementStyle></DataGridTextColumn>
+                            <DataGridTemplateColumn Header="НАЛИЧИЕ" Width="134"><DataGridTemplateColumn.CellTemplate><DataTemplate><Border Padding="8,5" CornerRadius="5" HorizontalAlignment="Left"><Border.Style><Style TargetType="Border"><Setter Property="Background" Value="#BAE3E8"/><Style.Triggers><DataTrigger Binding="{Binding IsAvailable}" Value="False"><Setter Property="Background" Value="#FAC716"/></DataTrigger></Style.Triggers></Style></Border.Style><TextBlock Text="{Binding StockText}" FontSize="12"/></Border></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock x:Name="EmptyText" Text="В каталоге пока нет товаров. Добавьте первый товар." Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource Muted}"/>
+                </Grid>
+            </Border>
+            <Border Grid.Row="4" Margin="0,12,0,12" Padding="14,10" Background="#BAE3E8" CornerRadius="8">
+                <StackPanel><TextBlock Text="ОПИСАНИЕ ВЫБРАННОГО ТОВАРА" FontSize="10" Foreground="{StaticResource Muted}"/><TextBlock x:Name="DescriptionText" Text="Выберите товар, чтобы увидеть описание. Двойной щелчок открывает редактирование." TextWrapping="Wrap" MaxHeight="48" Margin="0,5,0,0"/></StackPanel>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2" Margin="28,0">
+            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock x:Name="CounterText" Text="Загрузка…" VerticalAlignment="Center" FontSize="12" Foreground="{StaticResource Muted}"/>
+            <TextBlock x:Name="StatusText" Grid.Column="1" Margin="16,0" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" FontSize="12" Foreground="{StaticResource Muted}"/>
+            <TextBlock Grid.Column="2" Text="MS SQL Server  •  WPF" VerticalAlignment="Center" FontSize="12" Foreground="{StaticResource Muted}"/>
+        </Grid>
+    </Grid>
+</Window>

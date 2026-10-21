@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <ApplicationIcon>Resorce\app.ico</ApplicationIcon>
+    <AssemblyTitle>Alisa — каталог одежды | Зайцев В. И.</AssemblyTitle>
+    <Description>Практическая работа 16, вариант 4 — одежда Alisa</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="Resorce\app.ico" />
+    <Resource Include="Resorce\logo.jpg" />
+    <Content Include="connection.txt" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
