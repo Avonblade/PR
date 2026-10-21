@@ -1,5 +1,4 @@
-﻿-- Проверка базы после установки; запросы не изменяют данные.
-USE PR15_KitchenFurniture;
+﻿USE PR15_KitchenFurniture;
 GO
 SET NOCOUNT ON;
 SELECT DB_NAME() AS DatabaseName,
@@ -7,7 +6,6 @@ SELECT DB_NAME() AS DatabaseName,
        (SELECT COUNT(*) FROM dbo.FurnitureCategory) AS Categories,
        (SELECT COUNT(*) FROM dbo.FurnitureMaterial) AS Materials,
        (SELECT SUM(Stock) FROM dbo.FurnitureProduct) AS StockTotal;
--- Для исходного наполнения ожидается: 18 товаров / 6 категорий / 5 материалов / 155 единиц.
 
 SELECT p.Id, p.Article, p.Name, c.Name AS Category, m.Name AS Material,
        p.Price, p.WidthMm, p.DepthMm, p.HeightMm, p.Stock, p.Description
@@ -16,7 +14,6 @@ JOIN dbo.FurnitureCategory c ON p.CategoryId = c.Id
 JOIN dbo.FurnitureMaterial m ON p.MaterialId = m.Id
 ORDER BY p.Id;
 
--- Ожидаются пустые результаты трёх следующих проверок.
 SELECT p.Id AS OrphanProductId
 FROM dbo.FurnitureProduct p
 LEFT JOIN dbo.FurnitureCategory c ON p.CategoryId = c.Id

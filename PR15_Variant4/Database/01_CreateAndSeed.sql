@@ -1,7 +1,4 @@
-﻿-- Практическая работа 15. Вариант 4: мебель для кухни.
--- Автор проекта: ZaytsevVI. SQL Server 2016+ / SQL Server Express.
--- Запуск: sqlcmd -S ".\SQLEXPRESS" -E -C -b -i Database\01_CreateAndSeed.sql
-USE master;
+﻿USE master;
 GO
 IF DB_ID(N'PR15_KitchenFurniture') IS NULL
     CREATE DATABASE PR15_KitchenFurniture;

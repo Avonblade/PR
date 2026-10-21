@@ -3,7 +3,6 @@ using Microsoft.Data.SqlClient;
 
 namespace WPF_PR16_clothes_ZaytsevVI.ApplicationData;
 
-/// <summary>Creates SQL Server connections using the configuration beside the executable.</summary>
 public static class DatabaseConnection
 {
     public static async Task<SqlConnection> OpenAsync()

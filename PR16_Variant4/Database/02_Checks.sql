@@ -1,5 +1,4 @@
-﻿-- Практическая работа 16: проверка структуры и целостности без изменения данных.
-USE PR16_AlisaClothes;
+﻿USE PR16_AlisaClothes;
 GO
 SET NOCOUNT ON;
 SELECT DB_NAME() AS DatabaseName,
@@ -9,7 +8,6 @@ SELECT DB_NAME() AS DatabaseName,
        (SELECT COUNT(*) FROM dbo.ClothingSize) AS Sizes,
        (SELECT COUNT(*) FROM dbo.ClothingColor) AS Colors,
        (SELECT SUM(Stock) FROM dbo.ClothingProduct) AS StockTotal;
--- Начальные значения: 24 / 3 / 6 / 11 / 8 / 135.
 
 SELECT p.Id, p.Article, p.Name, c.Name AS Category, m.Name AS Material,
        s.Name AS Size, col.Name AS Color, p.Price, p.Stock
@@ -20,7 +18,6 @@ JOIN dbo.ClothingSize s ON s.Id = p.SizeId
 JOIN dbo.ClothingColor col ON col.Id = p.ColorId
 ORDER BY p.Id;
 
--- Ожидаются пустые результаты проверок ссылок, дубликатов и CHECK-ограничений.
 SELECT p.Id AS OrphanProductId
 FROM dbo.ClothingProduct p
 LEFT JOIN dbo.ClothingCategory c ON c.Id = p.CategoryId

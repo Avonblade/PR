@@ -3,7 +3,6 @@ using Microsoft.Data.SqlClient;
 
 namespace WPF_PR15_Mebel_ZaytsevVI.ApplicationData;
 
-/// <summary>Reads furniture and lookup data; writes products with optimistic concurrency checks.</summary>
 public sealed class FurnitureRepository
 {
     public async Task<List<LookupItem>> GetCategoriesAsync() =>

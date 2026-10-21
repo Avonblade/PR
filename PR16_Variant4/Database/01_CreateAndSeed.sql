@@ -1,7 +1,4 @@
-﻿-- Практическая работа 16. Вариант 4: куртки, джемперы, жакеты.
--- Проект WPF_PR16_clothes_ZaytsevVI. SQL Server 2016+ / Express.
--- Запуск: sqlcmd -S ".\SQLEXPRESS" -E -C -b -f 65001 -i Database\01_CreateAndSeed.sql
-USE master;
+﻿USE master;
 GO
 IF DB_ID(N'PR16_AlisaClothes') IS NULL CREATE DATABASE PR16_AlisaClothes;
 GO
