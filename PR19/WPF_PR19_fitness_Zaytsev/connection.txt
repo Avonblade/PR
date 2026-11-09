@@ -1,0 +1,1 @@
+Server=.\SQLEXPRESS;Database=PR19_Fitness;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Connect Timeout=5
