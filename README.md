@@ -10,6 +10,7 @@
 | [PR17](PR17/README.md) | ПР 17 — ресторан «Мармеладная зебра» | WPF_PR17_restaurant_Zaytsev | PR17_ZebraRestaurant |
 | [PR18](PR18/README.md) | ПР 18 — страховая медицинская компания | WPF_PR18_insurance_Zaytsev | PR18_MedicalInsurance |
 | [PR19](PR19/README.md) | ПР 19 — «Фитнес-учёт» | WPF_PR19_fitness_Zaytsev | PR19_Fitness |
+| [PR20](PR20/README.md) | ПР 20 — «ФотоСтудия» | WPF_PR20_studio_Zaytsev | PR20_PhotoStudio |
 
 ## Требования
 
